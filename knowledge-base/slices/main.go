@@ -28,5 +28,4 @@ func main() {
 	toSortNumber2 := SortNumbers{5, 2, 9, 1, 5, 6}
 	sort.Sort(byDec{toSortNumber2})
 	fmt.Println("Sorted numbers (descending):", toSortNumber2)
-	// Maps functions:
 }
