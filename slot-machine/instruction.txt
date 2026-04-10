@@ -1,0 +1,15 @@
+0. Initializes a Go module in the current directory.
+# go mod init main
+
+1. RUN:
+# go run main.go
+
+2. BUILD & RUN:
+# go run main.go
+# ./main
+
+3. Synchronizes dependencies based on your source code.
+# go mod tidy
+
+4. RUN ful package (project)
+# go run .   <- Requires init package first #0
