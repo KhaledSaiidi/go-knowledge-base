@@ -10,6 +10,9 @@ import "fmt"
 // slice, map, channel, func share underlying data (reference-like, not real pointers)
 // passing them copies the variable, but both still point to the same data → changes are visible outside
 //----------------------------------------------------------------------------------------------------------------------------
+// return person → returns a copy of the struct (value semantics, independent data)
+// return *person → returns a pointer; the compiler (via escape analysis) moves the struct from stack to heap
+// so it outlives the function and both caller and callee share the same instance
 
 func pointer() {
 	i, j := 42, 2701
