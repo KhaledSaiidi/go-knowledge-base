@@ -4,3 +4,4 @@ Card-tricks              <---  Slices
 Gross-store              <---  Maps
 Booking-up-for-beauty    <---  Time
 Chessboard               <---  Range in Non-struct types (Most Important)
+election-day             <--- Pointers
