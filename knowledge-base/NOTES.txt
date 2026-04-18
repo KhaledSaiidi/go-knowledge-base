@@ -1,9 +1,11 @@
 ---
-This is your last video about Golang Structs!                  --       https://www.youtube.com/watch?v=c8H0w4yBL10
 How To Use The Context Package In Golang?                      --       https://www.youtube.com/watch?v=kaZOXRqFPCw
-A Practical Example How To Use Interfaces In Golang            --       https://www.youtube.com/watch?v=McRq-uBAa9I
 Mastering Dependency Injection In Golang                       --       https://www.youtube.com/watch?v=UX4XjxWcDB4
+Tags
+ApiRequests
 
 ---
 TO REPEAT IMPORTANT:
 The Most Efficient Struct Configuration Pattern For Golang     --       https://www.youtube.com/watch?v=MDy7JQN5MN4
+A Practical Example How To Use Interfaces In Golang            --       https://www.youtube.com/watch?v=McRq-uBAa9I
+
