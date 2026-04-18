@@ -76,6 +76,29 @@ func getUsers(
 	w.Write(j)
 }
 
+func getAllUsers(
+	w http.ResponseWriter,
+	r *http.Request,
+) {
+	cacheMutex.RLock()
+	users := userCache
+	if users == nil {
+		cacheMutex.RUnlock()
+		http.Error(w, "No users found", http.StatusNotFound)
+		return
+	}
+	cacheMutex.RUnlock()
+
+	w.Header().Set("Content-Type", "application/json")
+	j, err := json.Marshal(users)
+	if err != nil {
+		http.Error(w, "Error encoding user data", http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	w.Write(j)
+}
+
 func deleteUsers(
 	w http.ResponseWriter,
 	r *http.Request,
@@ -104,6 +127,7 @@ func main() {
 
 	mux.HandleFunc("POST /users", createUser)
 	mux.HandleFunc("GET /users/{id}", getUsers)
+	mux.HandleFunc("GET /allusers", getAllUsers)
 	mux.HandleFunc("DELETE /users/{id}", deleteUsers)
 
 	fmt.Println("Server listenning to 8080")
