@@ -76,6 +76,34 @@ func getUsers(
 	w.Write(j)
 }
 
+func updateUser(
+	w http.ResponseWriter,
+	r *http.Request,
+) {
+	id, err := strconv.Atoi(r.PathValue("id"))
+	if err != nil {
+		http.Error(w, "Invalid user ID", http.StatusBadRequest)
+		return
+	}
+	newName := r.URL.Query().Get("name")
+	if newName == "" {
+		http.Error(w, "Invalid new Name", http.StatusBadRequest)
+		return
+	}
+
+	cacheMutex.Lock()
+	defer cacheMutex.Unlock()
+	user, exists := userCache[id]
+	if !exists {
+		http.Error(w, "User doesn't Exist", http.StatusNotFound)
+		return
+	}
+	user.Name = newName
+	userCache[id] = user
+	log.Printf("User %d updated successfully", id)
+	w.WriteHeader(http.StatusNoContent)
+}
+
 func getAllUsers(
 	w http.ResponseWriter,
 	r *http.Request,
@@ -129,7 +157,7 @@ func main() {
 	mux.HandleFunc("GET /users/{id}", getUsers)
 	mux.HandleFunc("GET /allusers", getAllUsers)
 	mux.HandleFunc("DELETE /users/{id}", deleteUsers)
-
+	mux.HandleFunc("PUT /users/{id}", updateUser)
 	fmt.Println("Server listenning to 8080")
 	http.ListenAndServe(":8080", mux)
 }
