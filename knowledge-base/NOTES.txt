@@ -1,8 +1,11 @@
 ---
+1-
+ Master Golang with Interfaces                                --        https://www.youtube.com/watch?v=IbXSEGB8LRs
+ Hands-on Channels, Concurrency & Race Conditions             --        https://www.youtube.com/watch?v=498xxetegRQ
+ By Building WebSocket Server | Golang Concurrency#1 
+2-
 How To Use The Context Package In Golang?                      --       https://www.youtube.com/watch?v=kaZOXRqFPCw
 Mastering Dependency Injection In Golang                       --       https://www.youtube.com/watch?v=UX4XjxWcDB4
-Tags
-ApiRequests
 
 ---
 TO REPEAT IMPORTANT:
