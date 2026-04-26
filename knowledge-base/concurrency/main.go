@@ -120,17 +120,10 @@ func main() {
 			}
 		}
 	}()
-	wg.Add(3)
-	for range 3 {
-		go func() {
-			defer wg.Done()
-			for _, order := range orders {
-				updateOrderStatuses(order)
-			}
-		}()
-	}
-
 	wg.Wait()
+	for _, order := range orders {
+		updateOrderStatuses(order)
+	}
 	reportOrdersStaus(orders)
 
 	fmt.Println("All operations completed. Exiting.")
